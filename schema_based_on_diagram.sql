@@ -11,3 +11,23 @@ CREATE TABLE "medical_histories" (
   "status" varchar
 );
 
+CREATE TABLE "invoices" (
+  "id" integer PRIMARY KEY,
+  "total_amount" decimal,
+  "generated_at" timestamp,
+  "payed_at" timestamp,
+  "medical_histories_id" integer
+);
+CREATE TABLE "invoices_items" (
+  "id" integer PRIMARY KEY,
+  "unit_price" decimal,
+  "quantity" integer,
+  "total_price" decimal,
+  "invoice_id" integer,
+  "treatment_id" integer
+);
+CREATE TABLE "treatments" (
+  "id" integer PRIMARY KEY,
+  "type" varchar,
+  "name" varchar
+);
