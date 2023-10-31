@@ -33,3 +33,21 @@ CREATE TABLE "treatments" (
   "type" varchar,
   "name" varchar
 );
+
+ALTER TABLE "medical_histories" ADD FOREIGN KEY ("patient_id") REFERENCES "patients" ("id");
+
+ALTER TABLE "invoices" ADD FOREIGN KEY ("medical_histories_id") REFERENCES "medical_histories" ("id");
+
+ALTER TABLE "invoices_items" ADD FOREIGN KEY ("invoice_id") REFERENCES "invoices" ("id");
+
+ALTER TABLE "invoices_items" ADD FOREIGN KEY ("treatment_id") REFERENCES "treatments" ("id");
+
+CREATE TABLE "treatments_medical_histories" (
+  "treatments_id" integer,
+  "medical_histories_id" integer,
+  PRIMARY KEY ("treatments_id", "medical_histories_id")
+);
+
+ALTER TABLE "treatments_medical_histories" ADD FOREIGN KEY ("treatments_id") REFERENCES "treatments" ("id");
+
+ALTER TABLE "treatments_medical_histories" ADD FOREIGN KEY ("medical_histories_id") REFERENCES "medical_histories" ("id");
