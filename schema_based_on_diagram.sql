@@ -18,6 +18,7 @@ CREATE TABLE "invoices" (
   "payed_at" timestamp,
   "medical_histories_id" integer
 );
+
 CREATE TABLE "invoices_items" (
   "id" integer PRIMARY KEY,
   "unit_price" decimal,
@@ -26,6 +27,7 @@ CREATE TABLE "invoices_items" (
   "invoice_id" integer,
   "treatment_id" integer
 );
+
 CREATE TABLE "treatments" (
   "id" integer PRIMARY KEY,
   "type" varchar,
